@@ -7,7 +7,12 @@
     "start": "run-p start:**",
     "start:hugo": "hugo -D -s site -d ../dist -vw",
     "start:rollup": "rollup -c",
-    "build": "hugo -s ./site -d ../dist && NODE_ENV=production rollup -c"
+    "preview": "run-p preview:**",
+    "preview:hugo": "npm run start:hugo -- -D -F",
+    "preview:rollup": "npm run start:rollup",
+    "build": "run-p build:**",
+    "build:hugo": "hugo -s ./site -d ../dist --gc --minify",
+    "build:rollup": "NODE_ENV=production rollup -c"
   },
   "author": "Jonathan Sanderson | @sanderjson",
   "license": "ISC",
