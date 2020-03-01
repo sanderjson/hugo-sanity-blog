@@ -6,6 +6,22 @@
 <!-- rss alternate -->
 <!-- themecolor -->
 <!-- scripts -->
+
+{{ if eq "production" (getenv "NODE_ENV") }}
+<!-- production -->
+{{ $js := resources.Get "bundle.js" }}
+{{ $secureJS := $js|resources.Fingerprint "sha256" }}
+<script
+  type="text/javascript"
+  src="{{ $secureJS.Permalink }}"
+  integrity="{{ $secureJS.Data.Integrity }}"
+></script>
+
+{{else}}
+<!-- development -->
+<title>development</title>
+{{ end }}
+
 <title>
   {{if .IsHome}}{{ .Site.Title }} {{else}} {{ .Title }} | {{ .Site.Title }}
   {{end}}
@@ -29,23 +45,29 @@
   content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}"
   property="og:description"
 />
-<meta content="#" property="og:image">
-<meta content="1200" property="og:image:width">
-<meta content="630" property="og:image:height">
+<meta content="#" property="og:image" />
+<meta content="1200" property="og:image:width" />
+<meta content="630" property="og:image:height" />
 <!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@sanderjson">
-<meta name="twitter:creator" content="@sanderjson">
-<meta name="twitter:title" content="{{if .IsHome}}{{ .Site.Title }} {{else}} {{ .Title }} | {{ .Site.Title }}{{end}}">
-<meta name="twitter:description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}">
-<meta name="twitter:image" content="#">
-<meta name="twitter:image:width" content="800">
-<meta name="twitter:image:height" content="418">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@sanderjson" />
+<meta name="twitter:creator" content="@sanderjson" />
+<meta
+  name="twitter:title"
+  content="{{if .IsHome}}{{ .Site.Title }} {{else}} {{ .Title }} | {{ .Site.Title }}{{end}}"
+/>
+<meta
+  name="twitter:description"
+  content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}"
+/>
+<meta name="twitter:image" content="#" />
+<meta name="twitter:image:width" content="800" />
+<meta name="twitter:image:height" content="418" />
 <!-- Search Engine Verifier -->
 <!-- Links -->
-<link href="{{ .Permalink }}" rel="canonical">
-<link href="{{ .Site.BaseURL }}" rel="home">
-<link href="{{ .Permalink }}" rel="alternate" hreflang="x-default">
+<link href="{{ .Permalink }}" rel="canonical" />
+<link href="{{ .Site.BaseURL }}" rel="home" />
+<link href="{{ .Permalink }}" rel="alternate" hreflang="x-default" />
 {{ printf "<!--Hugo Build Date: %s-->" hugo.BuildDate | safeHTML }}
 {{ printf "<!--Hugo Commit Hash: %s-->" hugo.CommitHash | safeHTML }}
 {{ hugo.Generator }}

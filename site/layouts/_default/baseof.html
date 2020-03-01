@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {{ block "site/meta" . }}{{ partial "site/meta.html" . }}{{ end }}
+    {{ block "site/head" . }}{{ partial "site/head.html" . }}{{ end }}
   </head>
 
   <body>
@@ -10,6 +10,5 @@
       {{ block "main" . }}{{ end }}
     </main>
     {{ block "footer" . }}{{ partial "site/footer.html" . }}{{ end }}
-    <script src="app.js"></script>
   </body>
 </html>

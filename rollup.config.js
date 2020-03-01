@@ -6,10 +6,10 @@ import serve from "rollup-plugin-serve";
 import livereload from "rollup-plugin-livereload";
 
 export default {
-  input: "src/app.js",
+  input: "src/bundle.js",
   output: {
-    dir: "dist",
-    format: "iife"
+    dir: "site/assets",
+    format: "cjs"
   },
   plugins: [
     commonjs(),
@@ -20,7 +20,13 @@ export default {
       exclude: "node_modules/**",
       ENV: JSON.stringify(process.env.NODE_ENV || "development")
     }),
-    process.env.NODE_ENV === "production" && uglify(),
+    process.env.NODE_ENV === "production" &&
+      uglify({
+        compress: {
+          inline: 1
+        }
+      }),
+
     process.env.NODE_ENV !== "production" &&
       serve({
         open: true,
