@@ -1,3 +1,8 @@
 baseURL = "/"
-languageCode = "en-us"
-title = "Starter Project"
+languageCode = "en"
+title = "Hugo Rollup Starter"
+
+[params]
+disallow_search_engines = true # set robots.txt to disallow everything
+description = "An site wide description search engines will like"
+author = "Jonathan Sanderson"

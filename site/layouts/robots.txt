@@ -1,0 +1,4 @@
+User-agent: *
+{{- if .Site.Params.disallow_search_engines }}
+Disallow: /
+{{ end }}

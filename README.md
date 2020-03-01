@@ -1,6 +1,6 @@
 # Hugo Starter | @sanderjson
 
-## Hugo + Rollup + Tailwindcss + ... + (AlpineJS || Svelte)
+## Hugo + Rollup + Tailwindcss + ... 
 A Hugo boilerplate for creating truly epic websites.
 
 ## Get Started

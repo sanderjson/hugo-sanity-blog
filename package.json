@@ -1,17 +1,18 @@
 {
   "name": "hugo-rollup-tailwindcss",
   "version": "1.0.0",
+  "private": true,
   "description": "Starter template for Jamstack projects",
   "main": "/src/app.js",
   "scripts": {
     "start": "run-p start:**",
     "start:hugo": "hugo -D -s site -d ../dist -vw",
-    "start:rollup": "rollup -c",
+    "start:rollup": "rollup -cw",
     "preview": "run-p preview:**",
-    "preview:hugo": "npm run start:hugo -- -D -F",
+    "preview:hugo": "npm run start:hugo -- -D -F -s site -d ../dist --gc --minify",
     "preview:rollup": "npm run start:rollup",
     "build": "run-p build:**",
-    "build:hugo": "hugo -s ./site -d ../dist --gc --minify",
+    "build:hugo": "hugo -s site -d ../dist --gc --minify",
     "build:rollup": "NODE_ENV=production rollup -c"
   },
   "author": "Jonathan Sanderson | @sanderjson",

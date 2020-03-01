@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    {{ block "site/meta" . }}{{ partial "site/meta.html" . }}{{ end }}
   </head>
 
   <body>
+    {{ block "header" . }}{{ partial "site/header.html" . }}{{ end }}
     <main class="site-main" role="main">
       {{ block "main" . }}{{ end }}
     </main>
+    {{ block "footer" . }}{{ partial "site/footer.html" . }}{{ end }}
+    <script src="app.js"></script>
   </body>
-
-  {{ block "footer" . }}{{ partial "site/footer.html" . }}{{ end }}
 </html>

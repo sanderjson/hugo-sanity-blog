@@ -1,7 +1,8 @@
 ---
 title: "My First Post"
-date: 2020-02-29T11:10:57-07:00
-draft: true
+date: 2020-02-29T18:03:01-07:00
+draft: false
+description: "An inpage insightful description for this page that Google will like"
 ---
 
 # Ut in nullae herbis seu obnoxia nunc
