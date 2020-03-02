@@ -5,29 +5,4 @@
 
 	console.log("hello from bundle.js");
 
-	var i = 0;
-
-	i = i + 1;
-	console.log(i);
-	i = i + 1;
-	console.log(i);
-	i = i + 1;
-	console.log(i);
-	i = i + 1;
-	console.log(i);
-	i = i + 1;
-	console.log(i);
-	i = i + 1;
-	console.log(i);
-	i = i + 1;
-	console.log(i);
-	i = i + 1;
-	console.log(i);
-	i = i + 1;
-	console.log(i);
-	i = i + 1;
-	console.log(i);
-	i = i + 1;
-	console.log(i);
-
 })));
