@@ -3,18 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "description": "Starter template for Jamstack projects",
-  "main": "/src/app.js",
+  "main": "/src/assets/js/app.js",
   "scripts": {
-    "clean": "rimraf site/static/bundle.{js,css} site/assets/bundle.{js,css} dist/*",
-    "start": "npm run clean &&  run-p start:**",
-    "start:hugo": "hugo -D -s site -d ../dist -vw",
-    "start:rollup": "rollup -cw",
-    "preview": "npm run clean &&  run-p preview:**",
-    "preview:hugo": "npm run start:hugo -- -D -F -s site -d ../dist --gc --minify",
-    "preview:rollup": "npm run start:rollup",
-    "build": "NODE_ENV=production run-s clean build:rollup build:hugo",
-    "build:hugo": " hugo -s site -d ../dist --gc --minify",
-    "build:rollup": "rollup -c"
+    "clean": "rimraf src/assets/bundle/* dist/*",
+    "start": "hugo server -D -s src -vw",
+    "build": "npm run build:rollup && npm run build:hugo",
+    "build:rollup": "NODE_ENV=production rollup -c",
+    "build:hugo": "NODE_ENV=production hugo -s src -d ../dist --gc --minify"
   },
   "author": "Jonathan Sanderson | @sanderjson",
   "license": "ISC",
@@ -22,12 +17,8 @@
     "@rollup/plugin-buble": "^0.21.1",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-replace": "^2.3.1",
-    "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
-    "rollup": "^1.32.0",
-    "rollup-plugin-livereload": "^1.0.4",
-    "rollup-plugin-serve": "^1.0.1",
-    "rollup-plugin-uglify": "^6.0.4"
+    "rollup": "^1.32.0"
   },
   "dependencies": {}
 }

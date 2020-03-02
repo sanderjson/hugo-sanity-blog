@@ -9,19 +9,19 @@
 
 {{ if eq "production" (getenv "NODE_ENV") }}
 <!-- production -->
-{{ $js := resources.Get "bundle.js" }}
-{{ $secureJS := $js|resources.Fingerprint "sha256" }}
+{{ $js := resources.Get "bundle/bundle.js" }}
+{{ $jsMin := $js | resources.Minify }}
+{{ $secureJS := $jsMin | resources.Fingerprint "sha256" }}
 <script
   type="text/javascript"
   src="{{ $secureJS.Permalink }}"
   integrity="{{ $secureJS.Data.Integrity }}"
 ></script>
-
 {{else}}
 <!-- development -->
-<title>development</title>
+{{ $js := resources.Get "js/app.js" }}
+<script src="{{ $js.Permalink }}"  type="text/javascript"></script>
 {{ end }}
-
 <title>
   {{if .IsHome}}{{ .Site.Title }} {{else}} {{ .Title }} | {{ .Site.Title }}
   {{end}}

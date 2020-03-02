@@ -1,15 +1,12 @@
 import commonjs from "@rollup/plugin-commonjs";
 import buble from "@rollup/plugin-buble";
 import replace from "@rollup/plugin-replace";
-import { uglify } from "rollup-plugin-uglify";
-import serve from "rollup-plugin-serve";
-import livereload from "rollup-plugin-livereload";
 
 export default {
-  input: "src/bundle.js",
+  input: "src/assets/js/app.js",
   output: {
-    dir: "site/assets",
-    format: "cjs"
+    file: "src/assets/bundle/bundle.js",
+    format: "umd"
   },
   plugins: [
     commonjs(),
@@ -20,21 +17,5 @@ export default {
       exclude: "node_modules/**",
       ENV: JSON.stringify(process.env.NODE_ENV || "development")
     }),
-    process.env.NODE_ENV === "production" &&
-      uglify({
-        compress: {
-          inline: 1
-        }
-      }),
-
-    process.env.NODE_ENV !== "production" &&
-      serve({
-        open: true,
-        openPage: "/",
-        verbose: true,
-        contentBase: ["dist"], // Path to fallback page
-        port: 3333
-      }),
-    process.env.NODE_ENV !== "production" && livereload("dist")
   ]
 };
