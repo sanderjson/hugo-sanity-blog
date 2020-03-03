@@ -6,6 +6,7 @@
   "main": "/src/assets/js/app.js",
   "scripts": {
     "clean": "rimraf src/assets/bundle/* dist/*",
+    "sourcebit": "./node_modules/.bin/sourcebit fetch",
     "start": "hugo server -D -s src -vw",
     "build": "npm run build:rollup && npm run build:hugo",
     "build:rollup": "NODE_ENV=production rollup -c",
@@ -17,8 +18,23 @@
     "@rollup/plugin-buble": "^0.21.1",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-replace": "^2.3.1",
+    "@sanity/block-content-to-markdown": "0.0.5",
     "rimraf": "^3.0.2",
     "rollup": "^1.32.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "sourcebit": "^0.7.0",
+    "sourcebit-source-sanity": "^0.1.1",
+    "sourcebit-target-hugo": "^0.2.0",
+    "sourcebit-transform-assets": "^0.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanderjson/hugo-rollup-tailwindcss.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/sanderjson/hugo-rollup-tailwindcss/issues"
+  },
+  "homepage": "https://github.com/sanderjson/hugo-rollup-tailwindcss#readme"
 }
